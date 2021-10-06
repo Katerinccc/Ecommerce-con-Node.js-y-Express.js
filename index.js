@@ -7,6 +7,15 @@ app.get("/", (req, res) =>{
   res.send("Hola mi server en Express");
 });
 
+app.get("/products", (req, res) =>{
+  res.send("Productos");
+});
+
+app.get("/categories", (req, res) =>{
+  res.send("Categorias");
+});
+
+
 app.listen(port,()=>{
   console.log(`Listening at http://localhost:${port}`)
 })
