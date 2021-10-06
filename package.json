@@ -1,0 +1,14 @@
+{
+  "name": "curso",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "lint": "eslint"
+  },
+  "keywords": [],
+  "author": "Katerin Calderon <kccc0713@gmail.com>",
+  "license": "ISC"
+}
