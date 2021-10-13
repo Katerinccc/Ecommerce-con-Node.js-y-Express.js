@@ -2,7 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 
-router.get("/categories", (req, res) =>{
+router.get("/", (req, res) =>{
   res.json([
     {
       name: "Tech",
