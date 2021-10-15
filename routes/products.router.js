@@ -1,5 +1,5 @@
 const express = require("express");
-const ProductsService = require("./../services/productservice");
+const ProductsService = require("../services/productService");
 
 const router = express.Router();
 const service = new ProductsService();
@@ -21,28 +21,22 @@ router.get("/:id", (req, res) =>{
 
 router.post("/", (req, res) =>{
   const body = req.body;
-  res.status(201).json({
-    message: "created",
-    data: body,
-  });
+  const newProduct = service.create(body);
+  res.status(201).json(newProduct);
 });
 
 router.patch("/:id", (req, res) =>{
   const {id} = req.params;
   const body = req.body;
-  res.json({
-    message: "update",
-    data: body,
-    id,
-  });
+  const updatedProduct = service.update(id, body);
+  res.status(200).json(updatedProduct);
 });
+
 
 router.delete("/:id", (req, res) =>{
   const {id} = req.params;
-  res.json({
-    message: "deleted",
-    id,
-  });
+  const answer = service.delete(id);
+  res.status(200).json(answer);
 });
 
 module.exports = router;
