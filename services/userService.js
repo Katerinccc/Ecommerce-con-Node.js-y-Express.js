@@ -5,7 +5,7 @@ class UserService {
     this.users = [];
     this.generate();
   }
-  generate() {
+  async generate() {
     const limit = 5;
     for (let index = 0; index < limit; index++) {
       this.users.push({
@@ -17,9 +17,13 @@ class UserService {
     };
   };
   find() {
-    return this.users;
-  }
-  create(data) {
+    return new Promise ((resolve, reject) => {
+      setTimeout(() => {
+        resolve(this.users);
+      },1000);
+    });
+  };
+  async create(data) {
     const newUser = {
       id: faker.datatype.uuid(),
       ...data
@@ -27,7 +31,7 @@ class UserService {
     this.users.push(newUser);
     return newUser;
   };
-  delete(id) {
+  async delete(id) {
     const index = this.users.findIndex(item => item.id === id);
     if (index === -1){
       throw new Error("product not found");
