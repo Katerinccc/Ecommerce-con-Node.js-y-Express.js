@@ -23,12 +23,12 @@ const options = {
 
 app.use(cors(options));
 
-app.get("/", (req, res) =>{
-  res.send("Hola mi server en Express");
+app.get('/', (req, res) =>{
+  res.send('Hola mi server en Express');
 });
 
-app.get("/home", (req, res) =>{
-  res.send("Home");
+app.get('/home', (req, res) =>{
+  res.send('Home');
 });
 
 routerApi(app);
