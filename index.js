@@ -8,7 +8,20 @@ const app = express();
 const port = 3000;
 
 app.use(express.json());
-app.use(cors());
+
+const whiteList = ["http://127.0.0.1:5500", "http://127.0.0.1:8080", "http://127.0.0.1:5501"];
+
+const options = {
+  origin: (origin, callback) => {
+    if (whiteList.includes(origin)){
+      callback(null, true);
+    }else{
+      callback(new Error("Acceso Denegado"));
+    }
+  }
+}
+
+app.use(cors(options));
 
 app.get("/", (req, res) =>{
   res.send("Hola mi server en Express");
